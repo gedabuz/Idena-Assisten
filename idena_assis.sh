@@ -2,6 +2,7 @@
 lagi='y'
 while [ $lagi == 'y' ] || [ $lagi == 'Y' ];
 do
+clear
 echo -e "=====================================";
 echo -e "\033[1;32m Selamat Datang Di Menu Idena Asisten\033[0m";
 echo -e "=====================================";
@@ -23,7 +24,7 @@ read -p "Masukkan Pilihan Anda [1-11]: " pil;
 echo -e "=====================================";
 case $pil in
 1)
-	echo on
+	set echo on
 	sudo fallocate -l 1G /swapfile2 && sudo chmod 600 /swapfile2 && sudo mkswap /swapfile2 && sudo swapon /swapfile2 && echo -e '/swapfile2 none swap sw 0 0' | sudo tee -a /etc/fstab
 	source <(curl -sL https://bit.ly/idena-manager-installer)
 	sudo ufw allow 9009/tcp
@@ -40,7 +41,7 @@ case $pil in
 	done
 ;;
 2)
-	echo on
+	set echo on
 	cd datadir-node1
 	apikey=$(<"api.key")
 	cd ..	
@@ -56,7 +57,7 @@ case $pil in
 	done
 ;;
 3)
-	echo on
+	set echo on
 	cd datadir-node1
 	apikey=$(<"api.key")
 	cd ..
@@ -72,7 +73,7 @@ case $pil in
 	done
 ;;
 4)
-	echo on
+	set echo on
 	idena-manager disable
 	cd datadir-node1
 	rm -r idenachain.db
@@ -97,7 +98,7 @@ case $pil in
 	done
 ;;
 5)
-	echo on
+	set echo on
 	idena-manager disable
 	curl -s https://api.github.com/repos/idena-network/idena-go/releases/latest | grep browser_download_url | grep idena-node-linux-0.* | cut -d '"' -f 4 | wget -qi -
 	mv idena-node-linux* idena-node-linux-latest
@@ -114,7 +115,7 @@ case $pil in
 	done	
 ;;
 6)
-	echo on
+	set echo on
 	apt-get update && apt-get upgrade -y
 	apt-get install git npm unzip curl screen -y
 	npm i npm@latest -g
@@ -134,7 +135,7 @@ case $pil in
 	PORT=80" > .env'
 	npm install
 	screen -dmS proxy npm start
-	echo off
+	set echo off
 	echo -e "\033[1;32m nodeshare Sudah Selesai di Instal dan dijalankan\033[0m"
 	echo -e "\033[1;32m untuk melihat status nodeshare silahkan Kembali ke menu dan pilih 7\033[0m"
 	echo -e -n "Kembali ke Menu Idena Asisten (Y) atau Selesai(N)?"
@@ -147,13 +148,13 @@ case $pil in
 	done
 ;;
 7)
-	echo off
+	set echo off
 	echo -e "\033[1;32m setelah selesai melihat status nodeshare tekan Ctr+A+D untuk keluar/close\033[0m"
 	pause
 	screen -r proxy
 ;;
 8)
-	echo off
+	set echo off
 	echo -e "\033[1;32m Silahkan ubah pada bagian AVAILABLE_KEYS sesuai formatnya\033[0m"
 	echo -e "\033[1;32m jika sudah selesai tekan Ctrl+X kemudian Y untuk menyimpan kemudian enter\033[0m"
 	echo -e "\033[1;32m setelah di simpan jangan lupa update nodeshare di menu idena Asisten\033[0m"
@@ -161,9 +162,9 @@ case $pil in
 	nano idena-node-proxy/.env
 ;;
 9)
-	echo on
+	set echo on
 	pm2 start idena-node-proxy --update-env
-	echo off
+	set echo off
 	echo -e "\033[1;32m nodeshare selesai di update\033[0m"
 	echo -n "Kembali ke Menu Idena Asisten (Y) atau Selesai(N)?"
 	read lagi;
@@ -175,9 +176,9 @@ case $pil in
 	done
 ;;
 10)
-	echo on
+	set echo on
 	pm2 delete idena-node-proxy
-	echo off
+	set echo off
 	echo -e "\033[1;32m nodeshare telah di nonaktfikan\033[0m"
 	echo -n "Kembali ke Menu Idena Asisten (Y) atau Selesai(N)?"
 	read lagi;
@@ -189,9 +190,9 @@ case $pil in
 	done
 ;;
 11)
-	echo on
+	set echo on
 	screen -dmS proxy npm start
-	echo off
+	set echo off
 	echo -e "\033[1;32m nodeshare telah di aktfikan\033[0m"
 	echo -n "Kembali ke Menu Idena Asisten (Y) atau Selesai(N)?"
 	read lagi;
