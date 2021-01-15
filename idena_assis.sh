@@ -100,8 +100,9 @@ case $pil in
 5)
 	set echo on
 	idena-manager disable
+	rm idena-node-linux-latest
 	curl -s https://api.github.com/repos/idena-network/idena-go/releases/latest | grep browser_download_url | grep idena-node-linux-0.* | cut -d '"' -f 4 | wget -qi -
-	mv idena-node-linux* idena-node-linux-latest
+	mv idena-node-linux-* idena-node-linux-latest
 	chmod +x idena-node-linux-latest
 	idena-manager enable
 	echo -e "\033[1;32m node sudah selesai di update\033[0m"
