@@ -18,8 +18,7 @@ echo -e "   8.\033[1;32mEdit/Tambah/Hapus Apikey pada Node Share\033[0m";
 echo -e "   9.\033[1;32mUpdate Node Share\033[0m"
 echo -e "  10.\033[1;32mMatikan nodeshare\033[0m"
 echo -e "  11.\033[1;32mHidupkan nodeshare\033[0m"
-echo -e "  12.\033[1;32mCek Status nodeshare\033[0m"
-echo -e "  13.\033[1;32mExit\033[0m";
+echo -e "  12.\033[1;32mExit\033[0m";
 echo -e "=====================================";
 read -p "Masukkan Pilihan Anda [1-11]: " pil;
 echo -e "=====================================";
@@ -213,17 +212,11 @@ PORT=80" > .env'
 	done
 ;;
 12)
-	pm2 ls
-	echo -n "Kembali ke Menu Idena Asisten (Y) atau Selesai(N)?"
-	read lagi;
-	while [ $lagi != 'y' ] && [ $lagi != 'Y' ] && [ $lagi != 'n' ] && [ $lagi != 'N' ];
-	do
-	echo -e "Maaf, input yang anda masukkan salah";
-	echo -n "Kembali ke Menu Idena Asisten (Y) atau Selesai(N)? ";
-	read lagi;
-	done
-;;
-13)
+	echo -e ""
+	echo -e "\033[1;32m Terima Kasih Sudah menggunakan idena Asisten\033[0m"
+	echo -e "\033[1;32m CREATED BY: Gedabuz\033[0m"
+	echo -e "\033[1;32m Jika Ada Pertanyaan silahkan PM ke tele @gedabuz atau di grup @idena_indonesia\033[0m"
+	echo -e "\033[1;32m iDNA Address = 0x9be7b230e901ad098e21398fa8567eeb8e7c6f2a \033[0m"
 	exit
 ;;
 *)	echo -e "Maaf, Pilihan Tidak tersedia"
