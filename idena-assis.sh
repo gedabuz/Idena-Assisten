@@ -224,7 +224,7 @@ PORT=80" > .env'
 	done
 ;;
 13)
-	exit
+	
 ;;
 *)	echo -e "Maaf, Pilihan Tidak tersedia"
 	echo -n "Kembali ke Menu Idena Asisten (Y) atau Selesai(N)?"
