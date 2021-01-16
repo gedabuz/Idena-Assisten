@@ -10,7 +10,7 @@ echo -e "\033[1;32m Sebelum Memulai Instalasi Pastikan Bahwa Spek VPS Yang Anda 
 echo -e "   1.\033[1;32mInstal Idena Manager\033[0m";
 echo -e "   2.\033[1;32mOnline Kan Status Mining\033[0m";
 echo -e "   3.\033[1;32mOffline Kan Status Mining\033[0m";
-echo -e "   4.\033[1;32mPerbaiki Error Idenachain.db pada idena manager\033[0m";
+echo -e "   4.\033[1;32mPerbaiki Error/update Idenachain.db pada idena manager\033[0m";
 echo -e "   5.\033[1;32mUpdate Node Manual Idena Manager\033[0m";
 echo -e "   6.\033[1;32mInstal Node Share\033[0m";
 echo -e "   7.\033[1;32mCek Status Node Share\033[0m";
@@ -18,13 +18,13 @@ echo -e "   8.\033[1;32mEdit/Tambah/Hapus Apikey pada Node Share\033[0m";
 echo -e "   9.\033[1;32mUpdate Node Share\033[0m"
 echo -e "  10.\033[1;32mMatikan nodeshare\033[0m"
 echo -e "  11.\033[1;32mHidupkan nodeshare\033[0m"
-echo -e "  12.\033[1;32mExit\033[0m";
+echo -e "  12.\033[1;32mCek Status nodeshare\033[0m"
+echo -e "  13.\033[1;32mExit\033[0m";
 echo -e "=====================================";
 read -p "Masukkan Pilihan Anda [1-11]: " pil;
 echo -e "=====================================";
 case $pil in
 1)
-	set echo on
 	sudo fallocate -l 1G /swapfile2 && sudo chmod 600 /swapfile2 && sudo mkswap /swapfile2 && sudo swapon /swapfile2 && echo -e '/swapfile2 none swap sw 0 0' | sudo tee -a /etc/fstab
 	source <(curl -sL https://bit.ly/idena-manager-installer)
 	sudo ufw allow 9009/tcp
@@ -41,7 +41,6 @@ case $pil in
 	done
 ;;
 2)
-	set echo on
 	cd datadir-node1
 	apikey=$(<"api.key")
 	cd ..	
@@ -87,7 +86,7 @@ case $pil in
 	cd ..
 	idena-manager enable
 	idena-manager status
-	echo -e "\033[1;32m idenachain.db sudah selesai diperbaiki\033[0m"
+	echo -e "\033[1;32m idenachain.db sudah selesai diperbaiki atau diupdate\033[0m"
 	echo -e -n "Kembali ke Menu Idena Asisten (Y) atau Selesai(N)?"
 	read lagi;
 	while [ $lagi != 'y' ] && [ $lagi != 'Y' ] && [ $lagi != 'n' ] && [ $lagi != 'N' ];
@@ -122,7 +121,7 @@ case $pil in
 	npm i npm@latest -g
 	bash -c 'echo -e "{\"IpfsConf\":{\"Profile\": \"server\" ,\"FlipPinThreshold\":1},\"Sync\": {\"LoadAllFlips\": true}}" > configshare.json'
 	idena-manager disable
-	screen -dmS idena-node ./idena-node-linux-latest --config=configshare.json
+	screen -dmS idena-node ./idena-node-linux-latest --config=configshare.json --datadir=datadir-node1
 	git clone https://github.com/idena-network/idena-node-proxy
 	npm i -g pm2
 	sudo ufw allow 80/tcp
@@ -131,12 +130,11 @@ case $pil in
 	cd ..
 	cd idena-node-proxy
 	bash -c 'echo -e "AVAILABLE_KEYS=[\"api1\",\"api2\"]
-	IDENA_URL=\"http://localhost:9009\"
-	IDENA_KEY=\"'$apikey'\"
-	PORT=80" > .env'
+IDENA_URL=\"http://localhost:9009\"
+IDENA_KEY=\"'$apikey'\"
+PORT=80" > .env'
 	npm install
-	screen -dmS proxy npm start
-	set echo off
+	npm start
 	echo -e "\033[1;32m nodeshare Sudah Selesai di Instal dan dijalankan\033[0m"
 	echo -e "\033[1;32m untuk melihat status nodeshare silahkan Kembali ke menu dan pilih 7\033[0m"
 	echo -e -n "Kembali ke Menu Idena Asisten (Y) atau Selesai(N)?"
@@ -149,23 +147,33 @@ case $pil in
 	done
 ;;
 7)
-	set echo off
-	echo -e "\033[1;32m setelah selesai melihat status nodeshare tekan Ctr+A+D untuk keluar/close\033[0m"
-	pause
-	screen -r proxy
+	pm2 ls
+	echo -n "Kembali ke Menu Idena Asisten (Y) atau Selesai(N)?"
+	read lagi;
+	while [ $lagi != 'y' ] && [ $lagi != 'Y' ] && [ $lagi != 'n' ] && [ $lagi != 'N' ];
+	do
+	echo -e "Maaf, input yang anda masukkan salah";
+	echo -n "Kembali ke Menu Idena Asisten (Y) atau Selesai(N)? ";
+	read lagi;
+	done
 ;;
 8)
-	set echo off
 	echo -e "\033[1;32m Silahkan ubah pada bagian AVAILABLE_KEYS sesuai formatnya\033[0m"
 	echo -e "\033[1;32m jika sudah selesai tekan Ctrl+X kemudian Y untuk menyimpan kemudian enter\033[0m"
 	echo -e "\033[1;32m setelah di simpan jangan lupa update nodeshare di menu idena Asisten\033[0m"
-	pause
+	read -p "Tekan Enter untuk melanjutkan proses"
 	nano idena-node-proxy/.env
+	echo -e -n "Kembali ke Menu Idena Asisten (Y) atau Selesai(N)?"
+	read lagi;
+	while [ $lagi != 'y' ] && [ $lagi != 'Y' ] && [ $lagi != 'n' ] && [ $lagi != 'N' ];
+	do
+	echo -e "Maaf, input yang anda masukkan salah";
+	echo -e -n "Kembali ke Menu Idena Asisten (Y) atau Selesai(N)? ";
+	read lagi;
+	done
 ;;
 9)
-	set echo on
 	pm2 start idena-node-proxy --update-env
-	set echo off
 	echo -e "\033[1;32m nodeshare selesai di update\033[0m"
 	echo -n "Kembali ke Menu Idena Asisten (Y) atau Selesai(N)?"
 	read lagi;
@@ -177,9 +185,8 @@ case $pil in
 	done
 ;;
 10)
-	set echo on
 	pm2 delete idena-node-proxy
-	set echo off
+	idena-manager enable
 	echo -e "\033[1;32m nodeshare telah di nonaktfikan\033[0m"
 	echo -n "Kembali ke Menu Idena Asisten (Y) atau Selesai(N)?"
 	read lagi;
@@ -191,9 +198,10 @@ case $pil in
 	done
 ;;
 11)
-	set echo on
-	screen -dmS proxy npm start
-	set echo off
+	idena-manager disable
+	cd idena-node-proxy
+	npm start
+	cd ..
 	echo -e "\033[1;32m nodeshare telah di aktfikan\033[0m"
 	echo -n "Kembali ke Menu Idena Asisten (Y) atau Selesai(N)?"
 	read lagi;
@@ -205,11 +213,17 @@ case $pil in
 	done
 ;;
 12)
-	echo -e ""
-	echo -e "\033[1;32m Terima Kasih Sudah menggunakan idena Asisten\033[0m"
-	echo -e "\033[1;32m CREATED BY: Gedabuz\033[0m"
-	echo -e "\033[1;32m Jika Ada Pertanyaan silahkan PM ke tele @gedabuz\033[0m"
-	echo -e "\033[1;32m untuk donasi silahkan kirim ke iDNA = 0x9be7b230e901ad098e21398fa8567eeb8e7c6f2a \033[0m"
+	pm2 ls
+	echo -n "Kembali ke Menu Idena Asisten (Y) atau Selesai(N)?"
+	read lagi;
+	while [ $lagi != 'y' ] && [ $lagi != 'Y' ] && [ $lagi != 'n' ] && [ $lagi != 'N' ];
+	do
+	echo -e "Maaf, input yang anda masukkan salah";
+	echo -n "Kembali ke Menu Idena Asisten (Y) atau Selesai(N)? ";
+	read lagi;
+	done
+;;
+13)
 	exit
 ;;
 *)	echo -e "Maaf, Pilihan Tidak tersedia"
@@ -225,6 +239,6 @@ esac
 echo -e ""
 echo -e "\033[1;32m Terima Kasih Sudah menggunakan idena Asisten\033[0m"
 echo -e "\033[1;32m CREATED BY: Gedabuz\033[0m"
-echo -e "\033[1;32m Jika Ada Pertanyaan silahkan PM ke tele @gedabuz\033[0m"
-echo -e "\033[1;32muntuk donasi silahkan kirim ke iDNA = 0x9be7b230e901ad098e21398fa8567eeb8e7c6f2a \033[0m"
+echo -e "\033[1;32m Jika Ada Pertanyaan silahkan PM ke tele @gedabuz atau di grup @idena_indonesia\033[0m"
+echo -e "\033[1;32m iDNA Address = 0x9be7b230e901ad098e21398fa8567eeb8e7c6f2a \033[0m"
 done
