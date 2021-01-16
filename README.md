@@ -8,5 +8,5 @@ source <(curl -sL https://bit.ly/3syac5e)
 
 
 # Cara Pakai
-bash idena_assis.sh
+bash idena-assis.sh
   
