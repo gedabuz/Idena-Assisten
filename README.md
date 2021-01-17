@@ -1,16 +1,3 @@
-gedabuz
-akupulang88
-prajjurit.dt@gmail.com
- PK    =    RGJGKH3KYNGB7W67
-
-
-
-
-date reles 24 june
-
-
-
-
 # Idena-Assisten
 Aplikasi untuk mempermudah maintenance dalam instalasi perangkat idena di Linux
 
