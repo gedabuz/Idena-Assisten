@@ -34,7 +34,7 @@ fitur ini berfungsi untuk menginstall node proxy dan menkonfigurasi menjadi node
 karena ketika nodeshare aktif maka secara otomatis akan mendisable idenamanager dan menjalan node1 pada konfigurasi node share.
 
 <b>7. Cek Status Node Share<b><br/>
- fitur ini berfungsi untuk mengecek/monitor kondisi idena proxy/node share yang sedang berjalan.
+fitur ini berfungsi untuk mengecek/monitor kondisi idena proxy/node share yang sedang berjalan.
   
 <b>8. Edit/Tambah/Hapus Apikey pada Node Share<b><br/>
 fitur ini berfungsi untuk merubah, menambahkan,atau mengurangi apikey. silahkan edit di bagian AVAILABLE_KEYS sesuai formatnya, jika sudah silahkan tekan Ctr+x kemudian Y lalu enter untuk menyimpanya. Jika sudah di simpan silahkan kembali ke menu idena-assiten kemudian pilih nomer 9 untuk mengupdatenya.
