@@ -11,7 +11,7 @@ source <(curl -sL https://bit.ly/3syac5e)
 bash idena-assis.sh
   
 # Fitur
-1 . Instal Idena manager<br/>
+<b>1 . Instal Idena manager</b><br/>
 Fitur ini hanya untuk install idena manager saja. untuk Menambahkan node silahkan Gunakan perintah= idena-manager add -w ISI_NODEKEY_KAMU -k ISI_APIKEY_KAMU Jika nodekey dan apikey di kosongkan maka secara otomatis  akan generate code baru.
   
 2 . Online kan Status Mining
