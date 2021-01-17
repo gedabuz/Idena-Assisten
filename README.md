@@ -29,6 +29,22 @@ secara default idena manager sudah melakukan update node secara otomatis. fitur 
 <b>6. Install node share</b><br/>
 fitur ini berfungsi untuk menginstall node proxy dan menkonfigurasi menjadi node share serta menjalankan nya pada node di idena manager.
 
-<b>Catatan</b>
+<b>Catatan</b><br/>
 "JANGAN MENG ENABLE NODE 1 PADA IDENA MANAGER KETIKA NODE PROXY AKTIF"
 karena ketika nodeshare aktif maka secara otomatis akan mendisable idenamanager dan menjalan node1 pada konfigurasi node share.
+
+<b>7. Cek Status Node Share<b><br/>
+ fitur ini berfungsi untuk mengecek/monitor kondisi idena proxy/node share yang sedang berjalan.
+<b>8. Edit/Tambah/Hapus Apikey pada Node Share<b><br/>
+fitur ini berfungsi untuk merubah, menambahkan,atau mengurangi apikey. silahkan edit di bagian AVAILABLE_KEYS sesuai formatnya, jika sudah silahkan tekan Ctr+x kemudian Y lalu enter untuk menyimpanya. Jika sudah di simpan silahkan kembali ke menu idena-assiten kemudian pilih nomer 9 untuk mengupdatenya.
+<b>9. Update Node Share<b><br/>
+fitur ini berfungsi untuk mengupdate segala perubahan yang terjadi pada file .evn di folder idena-node-proxy.
+<b>10. Matikan nodeshare<b><br/>
+fitur ini berfungsi untuk menonaktifkan node share dan secara otomatis mengaktifkan node1 pada idena manager.
+<b>11. Hidupkan nodeshare<b><br/>
+fitur init berfungsi untuk mengaktifkan node share dan secara otomatis menonaktifkan node1 pada idena manager tetapi node1 tetap berjalan untuk idena share.
+  
+CREATED BY: Gedabuz\033[0m"
+Jika Ada Pertanyaan silahkan PM ke tele @gedabuz atau di grup @idena_indonesia
+Donasi iDNA Address = 0x9be7b230e901ad098e21398fa8567eeb8e7c6f2a
+  
