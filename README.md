@@ -55,12 +55,12 @@ fitur ini berfungsi untuk merubah, menambahkan,atau mengurangi apikey. silahkan 
 <b>9. Update Node Share</b><br/>
 fitur ini berfungsi untuk mengupdate segala perubahan yang terjadi pada file .evn di folder idena-node-proxy.
   
-<b>10. Matikan nodeshare<b><br/>
+<b>10. Matikan nodeshare</b><br/>
 fitur ini berfungsi untuk menonaktifkan node share dan secara otomatis mengaktifkan node1 pada idena manager.
   
 <b>11. Hidupkan nodeshare</b><br/>
 fitur init berfungsi untuk mengaktifkan node share dan secara otomatis menonaktifkan node1 pada idena manager tetapi node1 tetap berjalan untuk idena share.
   
 CREATED BY: Gedabuz<br/>
-Jika Ada Pertanyaan silahkan PM ke tele @gedabuz atau di grup @idena_indonesia<br/>
+Jika Ada Pertanyaan silahkan PM ke tele @gedabuz atau di grup <a href="https://t.me/idena_indonesia">@idena_indonesia</a><br/>
 Donasi iDNA Address = 0x9be7b230e901ad098e21398fa8567eeb8e7c6f2a
