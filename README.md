@@ -27,4 +27,8 @@ fitur ini berfungsi untuk mempercepat proses syncronize pada node 1 idena manage
 secara default idena manager sudah melakukan update node secara otomatis. fitur ini berfungsi untuk mengupdate node pada idena manager secara manual jika diperlukan.
   
 <b>6. Install node share</b><br/>
-fitur ini berfungsi untuk menginstall node proxy dan menkonfigurasi menjadi node share serta menjalankan nya pada node idena manager.
+fitur ini berfungsi untuk menginstall node proxy dan menkonfigurasi menjadi node share serta menjalankan nya pada node di idena manager.
+
+<b>Catatan</b>
+"JANGAN MENG ENABLE NODE 1 PADA IDENA MANAGER KETIKA NODE PROXY AKTIF"
+karena ketika nodeshare aktif maka secara otomatis akan mendisable idenamanager dan menjalan node1 pada konfigurasi node share.
