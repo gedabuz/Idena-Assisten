@@ -38,10 +38,13 @@ karena ketika nodeshare aktif maka secara otomatis akan mendisable idenamanager 
   
 <b>8. Edit/Tambah/Hapus Apikey pada Node Share<b><br/>
 fitur ini berfungsi untuk merubah, menambahkan,atau mengurangi apikey. silahkan edit di bagian AVAILABLE_KEYS sesuai formatnya, jika sudah silahkan tekan Ctr+x kemudian Y lalu enter untuk menyimpanya. Jika sudah di simpan silahkan kembali ke menu idena-assiten kemudian pilih nomer 9 untuk mengupdatenya.
+  
 <b>9. Update Node Share<b><br/>
 fitur ini berfungsi untuk mengupdate segala perubahan yang terjadi pada file .evn di folder idena-node-proxy.
+  
 <b>10. Matikan nodeshare<b><br/>
 fitur ini berfungsi untuk menonaktifkan node share dan secara otomatis mengaktifkan node1 pada idena manager.
+  
 <b>11. Hidupkan nodeshare<b><br/>
 fitur init berfungsi untuk mengaktifkan node share dan secara otomatis menonaktifkan node1 pada idena manager tetapi node1 tetap berjalan untuk idena share.
   
