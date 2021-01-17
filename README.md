@@ -62,5 +62,5 @@ fitur ini berfungsi untuk menonaktifkan node share dan secara otomatis mengaktif
 fitur init berfungsi untuk mengaktifkan node share dan secara otomatis menonaktifkan node1 pada idena manager tetapi node1 tetap berjalan untuk idena share.
   
 CREATED BY: Gedabuz<br/>
-Jika Ada Pertanyaan silahkan PM ke tele @gedabuz atau di grup <a href="https://t.me/idena_indonesia">@idena_indonesia</a><br/>
+Jika Ada Pertanyaan silahkan PM ke tele <a href="https://t.me/gedabuz">@gedabuz</a> atau di grup <a href="https://t.me/idena_indonesia">@idena_indonesia</a><br/>
 Donasi iDNA Address = 0x9be7b230e901ad098e21398fa8567eeb8e7c6f2a
