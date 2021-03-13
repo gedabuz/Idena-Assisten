@@ -78,7 +78,7 @@ case $pil in
 	mkdir idenachain.db
 	cd idenachain.db
 	sudo apt-get install unzip
-	wget "https://idena.site/idenachain.db.zip"
+	wget "https://sync.idena-ar.com/idenachain.db.zip"
 	unzip idenachain.db.zip
 	rm idenachain.db.zip
 	cd ..
