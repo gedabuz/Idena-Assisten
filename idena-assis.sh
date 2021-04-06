@@ -40,7 +40,7 @@ case $pil in
 	done
 ;;
 2)
-	cd datadir-node1
+	cd /root/datadir-node1
 	apikey=$(<"api.key")
 	cd ..	
 	curl 'http://127.0.0.1:9009/' -H 'Content-Type: application/json' --data '{"method":"dna_becomeOnline","params":[{}],"id":1,"key": '$apikey'}'
@@ -56,7 +56,7 @@ case $pil in
 ;;
 3)
 	set echo on
-	cd datadir-node1
+	cd /root/datadir-node1
 	apikey=$(<"api.key")
 	cd ..
 	curl 'http://127.0.0.1:9009/' -H 'Content-Type: application/json' --data '{"method":"dna_becomeOffline","params":[{}],"id":1,"key": '$apikey'}'
@@ -73,7 +73,7 @@ case $pil in
 4)
 	set echo on
 	idena-manager disable
-	cd datadir-node1
+	cd /root/datadir-node1
 	rm -r idenachain.db
 	mkdir idenachain.db
 	cd idenachain.db
@@ -97,6 +97,7 @@ case $pil in
 ;;
 5)
 	set echo on
+	cd /root
 	idena-manager disable
 	rm idena-node-linux-latest
 	curl -s https://api.github.com/repos/idena-network/idena-go/releases/latest | grep browser_download_url | grep idena-node-linux-0.* | cut -d '"' -f 4 | wget -qi -
@@ -115,16 +116,17 @@ case $pil in
 ;;
 6)
 	set echo on
+	cd /root
 	apt-get update && apt-get upgrade -y
 	apt-get install git npm unzip curl screen -y
 	npm i npm@latest -g
 	bash -c 'echo -e "{\"IpfsConf\":{\"Profile\": \"server\" ,\"FlipPinThreshold\":1},\"Sync\": {\"LoadAllFlips\": true}}" > configshare.json'
 	idena-manager disable
-	screen -dmS idena-node ./idena-node-linux-latest --config=configshare.json --datadir=datadir-node1
-	git clone https://github.com/idena-network/idena-node-proxy
+	screen -dmS idena-nodeshare ./idena-node-linux-latest --config=configshare.json --datadir=datadir-nodeshare
+	git clone https://github.com/gedabuz/idena-node-proxy
 	npm i -g pm2
 	sudo ufw allow 80/tcp
-	cd datadir-node1
+	cd datadir-nodeshare
 	apikey=$(<"api.key")
 	cd ..
 	cd idena-node-proxy
@@ -157,6 +159,7 @@ PORT=80" > .env'
 	done
 ;;
 8)
+	cd /root
 	echo -e "\033[1;32m Silahkan ubah pada bagian AVAILABLE_KEYS sesuai formatnya\033[0m"
 	echo -e "\033[1;32m jika sudah selesai tekan Ctrl+X kemudian Y untuk menyimpan kemudian enter\033[0m"
 	echo -e "\033[1;32m setelah di simpan jangan lupa update nodeshare di menu idena Asisten\033[0m"
@@ -172,6 +175,7 @@ PORT=80" > .env'
 	done
 ;;
 9)
+	cd /root
 	pm2 start idena-node-proxy --update-env
 	echo -e "\033[1;32m nodeshare selesai di update\033[0m"
 	echo -n "Kembali ke Menu Idena Asisten (Y) atau Selesai(N)?"
@@ -184,7 +188,9 @@ PORT=80" > .env'
 	done
 ;;
 10)
+	cd /root
 	pm2 delete idena-node-proxy
+	screen -X -S idena-nodeshare quit
 	idena-manager enable
 	echo -e "\033[1;32m nodeshare telah di nonaktfikan\033[0m"
 	echo -n "Kembali ke Menu Idena Asisten (Y) atau Selesai(N)?"
@@ -198,6 +204,8 @@ PORT=80" > .env'
 ;;
 11)
 	idena-manager disable
+	cd /root
+	screen -dmS idena-nodeshare ./idena-node-linux-latest --config=configshare.json --datadir=datadir-nodeshare
 	cd idena-node-proxy
 	npm start
 	cd ..
