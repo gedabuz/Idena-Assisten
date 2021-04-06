@@ -117,11 +117,23 @@ case $pil in
 6)
 	set echo on
 	cd /root
+	idena-manager disable
 	apt-get update && apt-get upgrade -y
 	apt-get install git npm unzip curl screen -y
 	npm i npm@latest -g
+	rm -r datadir-nodeshare
+	mkdir datadir-nodeshare
+	cd datadir-nodeshare
+	rm -r idenachain.db
+	mkdir idenachain.db
+	cd idenachain.db
+	sudo apt-get install unzip
+	wget "https://sync.idena-ar.com/idenachain.db.zip"
+	unzip idenachain.db.zip
+	rm idenachain.db.zip
+	cd ..
+	cd ..
 	bash -c 'echo -e "{\"IpfsConf\":{\"Profile\": \"server\" ,\"FlipPinThreshold\":1},\"Sync\": {\"LoadAllFlips\": true}}" > configshare.json'
-	idena-manager disable
 	screen -dmS idena-nodeshare ./idena-node-linux-latest --config=configshare.json --datadir=datadir-nodeshare
 	git clone https://github.com/gedabuz/idena-node-proxy
 	npm i -g pm2
