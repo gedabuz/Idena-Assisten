@@ -135,17 +135,22 @@ case $pil in
 	cd ..
 	bash -c 'echo -e "{\"IpfsConf\":{\"Profile\": \"server\" ,\"FlipPinThreshold\":1},\"Sync\": {\"LoadAllFlips\": true}}" > configshare.json'
 	screen -dmS idena-nodeshare ./idena-node-linux-latest --config=configshare.json --datadir=datadir-nodeshare
-	git clone https://github.com/gedabuz/idena-node-proxy
+	git clone https://github.com/idena-network/idena-node-proxy
 	npm i -g pm2
 	sudo ufw allow 80/tcp
 	cd datadir-nodeshare
 	apikey=$(<"api.key")
 	cd ..
 	cd idena-node-proxy
-	bash -c 'echo -e "AVAILABLE_KEYS=[\"api1\",\"api2\"]
+	bash -c 'echo -e "PORT=80
 IDENA_URL=\"http://localhost:9009\"
 IDENA_KEY=\"'$apikey'\"
-PORT=80" > .env'
+AVAILABLE_KEYS=[\"api1\",\"api2\"]
+LOGS_OUTPUT=\"stdout\"
+GOD_API_KEY=\"cuk\"
+REMOTE_KEYS_ENABLE=0
+REMOTE_KEYS_URL=\"http://localhost:9010\"
+REMOTE_KEYS_AUTH=\"auth\" > .env'
 	npm install
 	npm start
 	echo -e "\033[1;32m nodeshare Sudah Selesai di Instal dan dijalankan\033[0m"
