@@ -145,12 +145,12 @@ case $pil in
 	bash -c 'echo "PORT=80
 IDENA_URL=\"http://localhost:9009\"
 IDENA_KEY=\"123\"
-AVAILABLE_KEYS=["api1","api2"]
-LOGS_OUTPUT="stdout"
-GOD_API_KEY="tes"
-REMOTE_KEYS_URL="http://localhost:9010"
-REMOTE_KEYS_AUTH="auth\"
-ENREMOTE_KEYS_ABLE=0 " > .env'
+AVAILABLE_KEYS=[\"api1\",\"api2\"]
+LOGS_OUTPUT=\"stdout\"
+GOD_API_KEY=\"tes\"
+REMOTE_KEYS_URL=\"http://localhost:9010\"
+REMOTE_KEYS_AUTH=\"auth\"
+REMOTE_KEYS_ENABLE=0" > .env'
 	npm install
 	npm start
 	echo -e "\033[1;32m nodeshare Sudah Selesai di Instal dan dijalankan\033[0m"
