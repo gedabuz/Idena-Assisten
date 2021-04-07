@@ -208,7 +208,6 @@ ENREMOTE_KEYS_ABLE=0 " > .env'
 	cd /root
 	pm2 delete idena-node-proxy
 	screen -X -S idena-nodeshare quit
-	idena-manager enable
 	echo -e "\033[1;32m nodeshare telah di nonaktfikan\033[0m"
 	echo -n "Kembali ke Menu Idena Asisten (Y) atau Selesai(N)?"
 	read lagi;
