@@ -8,7 +8,7 @@ source <(curl -sL https://bit.ly/3syac5e)
 
 
 # Cara Pakai
-bash idena-assis.sh
+gunakan perintah  "idena-assis"
   
 # Fitur
 <b>1. Instal Idena manager</b><br/>
@@ -43,10 +43,10 @@ fitur ini berfungsi untuk merubah, menambahkan,atau mengurangi apikey. silahkan 
 fitur ini berfungsi untuk mengupdate segala perubahan yang terjadi pada file .evn di folder idena-node-proxy.
   
 <b>10. Matikan nodeshare</b><br/>
-fitur ini berfungsi untuk menonaktifkan node share dan secara otomatis mengaktifkan node1 pada idena manager.
+fitur ini berfungsi untuk menonaktifkan node share.
   
 <b>11. Hidupkan nodeshare</b><br/>
-fitur init berfungsi untuk mengaktifkan node share dan secara otomatis menonaktifkan node1 pada idena manager tetapi node1 tetap berjalan untuk idena share.
+fitur init berfungsi untuk mengaktifkan node share dan secara otomatis menonaktifkan node1 pada idena manager.
   
 CREATED BY: Gedabuz<br/>
 Jika Ada Pertanyaan silahkan PM ke tele <a href="https://t.me/gedabuz">@gedabuz</a> atau di grup <a href="https://t.me/idena_indonesia">@idena_indonesia</a><br/>
